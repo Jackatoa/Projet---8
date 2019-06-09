@@ -1,0 +1,138 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    {% if title %}
+    <title>PurBeurre - {{ title }}</title>
+    {% else %}
+    <title>PurBeurre - Eat Smart !</title>
+    {% endif %}
+
+    <!-- Font Awesome Icons -->
+    <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic'
+          rel='stylesheet' type='text/css'>
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Scope+One" rel="stylesheet" type="text/css">
+    <!-- Plugin CSS -->
+    <link href="{% static 'vendor/magnific-popup/magnific-popup.css' %}" rel="stylesheet">
+
+    <!-- Theme CSS - Includes Bootstrap -->
+    <link href="{% static 'css/creative.css' %}" rel="stylesheet">
+
+</head>
+<body id="page-top">
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
+    <div class="container">
+        <div id="logobox">
+            <img id="logoleft" class="logonav" src="{% static 'img/logo_pur_beurre.png' %}">
+            <a id="logotext" class="navbar-brand js-scroll-trigger" href="#page-top">Pur Beurre</a>
+            <img id="logoright" class="logonav" src="{% static 'img/logo_pur_beurre.png' %}">
+        </div>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                data-target="#navbarResponsive" aria-controls="navbarResponsive"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <div class="navbar-nav ml-auto my-2 my-lg-0">
+                <form class="search">
+                    <div class="search__field">
+                        <input type="text" id="query2"
+                               class="r-text-field a-field__input search__input navinput"
+                               placeholder=" exemple : ratatouille" required>
+                        <button class="r-button search__button search__clear" type="reset">
+                            <span class="search__clear-label">Nettoie le formulaire</span>
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                 viewBox="0 0 47.971 47.971"
+                                 class=" search navsearch navicon search__icon-clear">
+                                <path d="M28.228 23.986L47.092 5.122a2.998 2.998 0 0 0 0-4.242 2.998 2.998 0 0 0-4.242 0L23.986 19.744 5.121.88a2.998 2.998 0 0 0-4.242 0 2.998 2.998 0 0 0 0 4.242l18.865 18.864L.879 42.85a2.998 2.998 0 1 0 4.242 4.241l18.865-18.864L42.85 47.091c.586.586 1.354.879 2.121.879s1.535-.293 2.121-.879a2.998 2.998 0 0 0 0-4.242L28.228 23.986z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <button class="r-button search__button search__submit"
+                            type="submit">
+                        <span class="search__submit-label">Recherche</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56.966 56.966"
+                             class="navicon search navsearch search__icon-search">
+                            <path d="M55.146 51.887L41.588 37.786A22.926 22.926 0 0 0 46.984 23c0-12.682-10.318-23-23-23s-23 10.318-23 23 10.318 23 23 23c4.761 0 9.298-1.436 13.177-4.162l13.661 14.208c.571.593 1.339.92 2.162.92.779 0 1.518-.297 2.079-.837a3.004 3.004 0 0 0 .083-4.242zM23.984 6c9.374 0 17 7.626 17 17s-7.626 17-17 17-17-7.626-17-17 7.626-17 17-17z"/>
+                        </svg>
+                    </button>
+                </form>
+            </div>
+            <div>
+                <button onclick="window.location.href = '/home/about';"
+                        class="js-scroll-trigger btn navbutton"><i
+                        class="fas fa-user"></i></button>
+                <button onclick="window.location.href = '/home/';"
+                        class="js-scroll-trigger btn navcarrotbutton"></button>
+                <button onclick="window.location.href = '#contact';"
+                        class="js-scroll-trigger btn navbutton"><i
+                        class="fas fa-sign-out-alt"></i></button>
+            </div>
+        </div>
+    </div>
+</nav>
+
+{% block content%}{% endblock %}
+<footer class="bg-primary py-5">
+    <div class="text-center">
+        <h3><a class="footerbtn js-scroll-trigger" href="#">Mentions légales</a> - <a
+                class="footerbtn js-scroll-trigger" href="#contact">Contact</a></h3>
+    </div>
+    <div class="footer-copyright text-center">
+        <div class="mt-5 mb-4 text-center">
+            <a href="https://www.facebook.com/openclassroomsfr/" class="fb-ic">
+                <i class="fab fa-facebook-f fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+            </a>
+            <a href="https://twitter.com/ocfrance" class="tw-ic">
+                <i class="fab fa-twitter fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+            </a>
+            <a href="https://openclassrooms.com/fr/partners/google" class="gplus-ic">
+                <i class="fab fa-google-plus-g fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+            </a>
+            <a href="https://www.linkedin.com/in/xavier-endres-53b48b178/" class="li-ic">
+                <i class="fab fa-linkedin-in fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+            </a>
+            <a href="https://www.instagram.com/openclassrooms/?hl=fr" class="ins-ic">
+                <i class="fab fa-instagram fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+            </a>
+            <a href="https://www.pinterest.fr/" class="pin-ic">
+                <i class="fab fa-pinterest fa-lg white-text fa-2x"> </i>
+            </a>
+        </div>
+        <p>Xavier Endres - <a href="https://openclassrooms.com"
+                              target="_blank">Openclassrooms</a> -
+            <a href="https://github.com/Jackatoa" target="_blank">GitHub</a></p>
+    </div>
+    <div class="container">
+        <div class="small text-center text-copy">Copyright &copy; 2219 - RatatouilleCorp</div>
+    </div>
+</footer>
+
+<!-- Bootstrap core JavaScript -->
+<script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+<!-- Plugin JavaScript -->
+<script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+<script src="{% static 'vendor/magnific-popup/jquery.magnific-popup.min.js' %}"></script>
+
+<!-- Custom scripts for this template -->
+<script src="{% static 'js/creative.min.js' %}"></script>
+
+</body>
+
+</html>
