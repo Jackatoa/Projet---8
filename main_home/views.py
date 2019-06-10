@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .models import Aliment
 
 posts = [
     {
@@ -25,6 +26,13 @@ def home(request):
 
 def about(request):
     context = {
-        'posts': posts
+        'posts': Aliment.objects.all()
     }
     return render(request, 'main_home/test.html', context, {'title': 'About'})
+
+def searchresult(request):
+    queryresult = {
+
+    }
+    return render(request, 'main_home/proposition.html', queryresult, {'title': 'Résultats de la '
+                                                                                'recherche'})
