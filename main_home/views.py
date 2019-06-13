@@ -1,38 +1,37 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from django.shortcuts import render, redirect
 from .models import Aliment
-
-posts = [
-    {
-        'author'     : 'CoreyMS',
-        'title'      : 'Blog Post1',
-        'content'    : 'First content',
-        'date_posted': 'August 27, 2018'
-    },
-    {
-        'author'     : 'JEANNE DARC',
-        'title'      : 'Blog Post2',
-        'content'    : 'SECOND content',
-        'date_posted': 'August 99, 2099'
-    }
-]
+from .function import get_results
 
 
 # Create your views here.
 
 def home(request):
+    query = request.GET.get('query')
+    print(query)
+    if query:
+        context = {'foods': get_results(query)}
+        return render(request, 'main_home/search.html', context, {'title': 'Résultats'})
+
     return render(request, 'main_home/home.html')
 
 
-def about(request):
+def saved(request):
+    return render(request, 'main_home/saved.html')
+
+
+def search(request):
+    return render(request, 'main_home/search.html', {'title': 'Résultats'})
+
+
+def aliment(request):
+    aliment = {
+        'name': 'Ratatouille RatatouilleRatatouille RatatouilleRatatouille RatatouilleRatatouille',
+        'img': 'https://static.openfoodfacts.org/images/products/341/229/007/1788'
+               '/front_fr.4.400.jpg', 'nutriscore': 'nutri', 'nutriletter': 'A',
+        'url': 'https://world.openfoodfacts.org/product/3017230000059/olives-confites'
+               '-denoyautees-tramier',
+        'nutrilabel': 'A'}
     context = {
-        'posts': Aliment.objects.all()
+        'aliment': aliment
     }
-    return render(request, 'main_home/test.html', context, {'title': 'About'})
-
-def searchresult(request):
-    queryresult = {
-
-    }
-    return render(request, 'main_home/proposition.html', queryresult, {'title': 'Résultats de la '
-                                                                                'recherche'})
+    return render(request, 'main_home/aliment.html', context, {'title': 'Descriptif'})
