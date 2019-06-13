@@ -1,10 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends "main_home/base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="emptybar"></div>
+<div class="basicbox">
+        <div class="form-style-10 alimentcard mt-5">
+            <h1>Informations du produit :</h1>
+            <div class="section"><span>1</span>Nom :</div>
+            <div class="inner-wrap">
+                <h2 class="">{{ aliment.name }}</h2>
+            </div>
+            <div class="section"><span>2</span>Nutriscore :</div>
+            <div class="inner-wrap alimentimgnutri">
+                <img src="{% static 'img/nutria.png' %}">
+            </div>
+            <div class="section"><span>3</span>Photos du produit :</div>
+            <div class="inner-wrap alimentimgbox">
+                <img src="{{ aliment.img }}"><img src="{{ aliment.img }}">
+            </div>
+            <div class="section"><span>4</span>Magasins :</div>
+            <div class="inner-wrap">
+                <p class="">{{ aliment.stores }}</p>
+            </div>
+            <div class="section"><span>5</span>Fiche du produit sur openfoodfacts :</div>
+            <div class="inner-wrap text-center">
+                <div class="button-section"
+                     onclick="window.location.href = '{{ aliment.url }}';">
+                    <input type="button" name="Sign Up" value="Voir la fiche"/>
+                </div>
+            </div>
+        </div>
+        <!-- FORM HERE -->
+    </div>
+</div>
+{% endblock content %}
