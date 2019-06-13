@@ -17,7 +17,8 @@
 
     <!-- Font Awesome Icons -->
     <script src="https://kit.fontawesome.com/ca341b8d56.js"></script>
-    <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet"
+          type="text/css">
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet">
@@ -39,19 +40,19 @@
     <div class="container">
         <div id="logobox">
             <img id="logoleft" class="logonav" src="{% static 'img/logo_pur_beurre.png' %}">
-            <a id="logotext" class="navbar-brand js-scroll-trigger" href="#page-top">Pur Beurre</a>
+            <a id="logotext" class="navbar-brand js-scroll-trigger" href="/home/">Pur Beurre</a>
             <img id="logoright" class="logonav" src="{% static 'img/logo_pur_beurre.png' %}">
         </div>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
                 data-target="#navbarResponsive" aria-controls="navbarResponsive"
                 aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+            <i class="fas fa-bars"></i>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <div class="navbar-nav ml-auto my-2 my-lg-0">
                 <form class="search">
                     <div class="search__field">
-                        <input type="text" id="query2"
+                        <input type="text" name="query" id="query2"
                                class="r-text-field a-field__input search__input navinput"
                                placeholder=" exemple : ratatouille" required>
                         <button class="r-button search__button search__clear" type="reset">
@@ -74,20 +75,40 @@
                 </form>
             </div>
             <div>
-                <button onclick="window.location.href = '/home/about';"
+                {% if user.is_authenticated %}
+                <button onclick="window.location.href = {% url 'profile' %};"
                         class="js-scroll-trigger btn navbutton"><i
                         class="fas fa-user"></i></button>
-                <button onclick="window.location.href = '/home/';"
+                <button onclick="window.location.href = '/home/saved/';"
                         class="js-scroll-trigger btn navcarrotbutton"></button>
-                <button onclick="window.location.href = '#contact';"
+                <button onclick="window.location.href = {% url 'logout' %};"
                         class="js-scroll-trigger btn navbutton"><i
                         class="fas fa-sign-out-alt"></i></button>
+                {% else %}
+                <button onclick="window.location.href = {% url 'profile' %};"
+                        class="js-scroll-trigger btn navbutton"><i
+                        class="fas fa-user"></i></button>
+                <button onclick="window.location.href = '/home/saved/';"
+                        class="js-scroll-trigger btn navcarrotbutton"></button>
+                <button onclick="window.location.href = {% url 'login' %};"
+                        class="js-scroll-trigger btn navbutton"><i
+                        class="fas fa-sign-in-alt"></i></button>
+                {% endif %}
             </div>
         </div>
     </div>
 </nav>
-
-{% block content%}{% endblock %}
+<div class="flashmessagebox">
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }}">
+    {{ message }}
+    </div>
+    {% endfor %}
+{% endif %}
+</div>
+{% block content%}
+{% endblock %}
 <footer class="bg-primary py-5">
     <div class="text-center">
         <h3><a class="footerbtn js-scroll-trigger" href="#">Mentions légales</a> - <a
