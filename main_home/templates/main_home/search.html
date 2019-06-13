@@ -13,7 +13,7 @@
             {% for food in foods %}
             <card data-image="{{ food.img }}">
                 <a slot="nutri" href="https://fr.openfoodfacts.org/nutriscore" class="nutri {{ food.nutriscore }}">{{food.nutriletter}}</a>
-                <h1 slot="header">{{ food.name }}</h1>
+                <h1 class="foodname" slot="header">{{ food.name }}</h1>
                 <button class="btn savebtn" slot="save"><i class="far fa-save"></i></button>
             </card>
             {% endfor %}
