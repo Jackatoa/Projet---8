@@ -1,10 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends "main_home/base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="basicbox">
+    <div class="profilebande"></div>
+    <div class="">
+        <div class="form-style-10 mt-5">
+            <h1>Informations du compte<span>Plus d'options à venir dans la v2</span></h1>
+            <div class="section"><span>1</span>Pseudo</div>
+            <div class="inner-wrap">
+
+                <h2 class="">{{ user.username }}</h2>
+            </div>
+            <div class="section"><span>2</span>Email</div>
+            <div class="inner-wrap">
+                <p class="">{{ user.email }}</p>
+            </div>
+        </div>
+        <!-- FORM HERE -->
+    </div>
+</div>
+{% endblock content %}
