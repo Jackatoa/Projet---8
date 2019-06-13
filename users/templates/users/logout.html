@@ -1,10 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends "main_home/base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="emptybar"></div>
+<div class="basicbox">
+<div class="form-style-10 mt-5">
+<h2>Vous êtes déconnecté</h2>
+    <div class="mt-2">
+            <small class="labelform10">
+                <a class="ml-2 loginpopup" href="{% url 'login' %}">Connectez vous ici !</a></small>
+        </div>
+</div></div>
+{% endblock content %}

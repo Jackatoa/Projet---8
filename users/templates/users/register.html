@@ -1,10 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends "main_home/base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="emptybar"></div>
+<div class="basicbox">
+<div class="form-style-10 mt-5">
+<h1>Rejoignez nous
+    !<span>Créez un compte et accédez à toutes les fonctionnalités de Pur Beurre !</span></h1>
+<form method="POST">
+    {% csrf_token %}
+    <div class="section"><span>1</span>Pseudo & Email</div>
+    <div class="inner-wrap">
+
+        <label class="labelform10">{{ form.username|as_crispy_field }}</label>
+        <label class="labelform10">{{ form.email|as_crispy_field }} </label>
+    </div>
+    <div class="section"><span>2</span>Mot de passe</div>
+        <div class="inner-wrap">
+        <label class="labelform10">{{ form.password1|as_crispy_field }}</label>
+        <label class="labelform10">{{ form.password2|as_crispy_field }}</label>
+    </div>
+    <div class="button-section">
+     <input type="submit" name="Sign Up" />
+    </div>
+    <div class="mt-2">
+            <small class="labelform10"> Vous possédez déjà un compte ?
+                <a class="ml-2 loginpopup" href="{% url 'login' %}">Connectez vous ici !</a></small>
+        </div>
+</form>
+</div></div>
+{% endblock content %}
