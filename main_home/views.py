@@ -18,9 +18,9 @@ def search(request):
         if "next" in request.POST:
             value = {}
             value['next'] = request.POST.get('next', None)
-            categorie = a.select_categorie(value['next'])
-            print(categorie)
-            context = {'foods': a.get_results_from_category(categorie)}
+            finalvalue = ast.literal_eval(value['next'])
+            categorie = a.select_categorie(finalvalue[0])
+            context = {'foods': a.get_results_from_category(categorie, finalvalue[1])}
             return render(request, 'main_home/search.html', context, {'title': 'Descriptif'})
     return render(request, 'main_home/search.html', {'title': 'Résultats'})
 

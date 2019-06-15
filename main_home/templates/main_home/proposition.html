@@ -13,15 +13,19 @@
             {% for food in foods %}
             <form method="POST" action="{% url 'main_home-search' %}">
                 {% csrf_token %}
+                {% if food.img == 'default img' %}
+                <card data-image="{% static 'img/cakeisalie.png' %}">
+                {% else %}
                 <card data-image="{{ food.img }}">
+                {% endif %}
                     <a slot="nutri" href="https://fr.openfoodfacts.org/nutriscore"
                        class="nutri {{ food.nutriscore }}">{{food.nutriletter}}</a>
-                    <h1 class="foodname" slot="header">{{ food.name }}</h1>
+                    <h1 class="foodname" slot="header">{{ food.product_name_fr }}</h1>
                     <button class="btn savebtn" type="submit" formaction="{% url 'main_home-aliment' %}"
                             value="{{ food }}"
                             slot="save" name="info"><i class="fas fa-info-circle"></i></button>
                     <button class="btn savebtn" type="submit"
-                            slot="save" name="next" value="{{ food.categorie }}"><i
+                            slot="save" name="next" value="{{ food.info }}"><i
                             class="fas fa-arrow-circle-right"></i></button>
                 </card>
             </form>

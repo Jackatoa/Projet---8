@@ -4,47 +4,79 @@
 {% block content %}
 <div class="emptybar"></div>
 <div class="basicbox">
-        <div class="form-style-10 alimentcard mt-5">
-            <h1>Informations du produit :</h1>
-            <div class="section"><span>1</span>Nom :</div>
-            <div class="inner-wrap">
-                <h2 class="">{{ aliment.name }}</h2>
+    <div class="form-style-10 alimentcard mt-5">
+        <h1>Informations du produit :</h1>
+        <div class="section"><span>1</span>Nom :</div>
+        <div class="inner-wrap">
+            <h2 class="">{{ aliment.product_name_fr }}</h2>
+        </div>
+        <div class="section"><span>2</span>Nutriscore :</div>
+        <div class="inner-wrap alimentimgnutri">
+            {% if aliment.nutriletter == 'A' %}
+            <img src="https://static.openfoodfacts.org/images/misc/nutriscore-a.svg">
+            {% elif aliment.nutriletter == 'B' %}
+            <img src="https://static.openfoodfacts.org/images/misc/nutriscore-b.svg">
+            {% elif aliment.nutriletter == 'C' %}
+            <img src="https://static.openfoodfacts.org/images/misc/nutriscore-c.svg">
+            {% elif aliment.nutriletter == 'D' %}
+            <img src="https://static.openfoodfacts.org/images/misc/nutriscore-d.svg">
+            {% elif aliment.nutriletter == 'E' %}
+            <img src="https://static.openfoodfacts.org/images/misc/nutriscore-e.svg">
+            {% endif %}
+        </div>
+        <div class="section"><span>3</span>Photos du produit :</div>
+        <div class="inner-wrap alimentimgbox">
+            {% if aliment.img == 'default img' and aliment.url_nutri == "default nutriimg" %}
+            <img id="myImg" src="{% static 'img/cakeisalie.png' %}" style="width:100%;max-width:300px"><img
+                id="myImg2" src="{% static 'img/cakeisalie.png' %}" style="width:100%;max-width:300px">
+            {% elif aliment.img == 'default img' and aliment.url_nutri != "default nutriimg" %}
+            <img id="myImg" src="{% static 'img/cakeisalie.png' %}" style="width:100%;max-width:300px"><img
+                id="myImg2" src="{{aliment.url_nutri}}" style="width:100%;max-width:300px">
+            {% elif aliment.img != 'default img' and aliment.url_nutri == "default nutriimg" %}
+            <img id="myImg" src="{{aliment.img}}" style="width:100%;max-width:300px"><img
+                id="myImg2" src="{% static 'img/cakeisalie.png' %}" style="width:100%;max-width:300px">
+            {% else %}
+            <img id="myImg" src="{{aliment.img}}" style="width:100%;max-width:300px"><img
+                id="myImg2" src="{{aliment.url_nutri}}" style="width:100%;max-width:300px">
+            {% endif %}
+        </div>
+
+
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+
+            <!-- The Close Button -->
+            <span class="close">&times;</span>
+
+            <!-- Modal Content (The Image) -->
+            <img class="modal-content" id="img01">
+
+            <!-- Modal Caption (Image Text) -->
+            <div id="caption"></div>
+        </div>
+        {% if aliment.stores %}
+        <div class="section"><span>4</span>Magasins :</div>
+        <div class="inner-wrap">
+
+            <p class="">{% for store in aliment.stores%} {{store}}, {% endfor %}</p>
+
+        </div>
+        {% endif %}
+        <div class="section"><span>{% if aliment.stores %}5{% else %}4{% endif %}</span>Fiche
+            du produit sur openfoodfacts :
+        </div>
+        <div class="inner-wrap text-center alimentcardbuttonbox">
+            <div class="button-section mt-1"
+                 onclick="window.location.href = '{{ aliment.url }}';">
+                <input type="button" value="Voir la fiche"/>
             </div>
-            <div class="section"><span>2</span>Nutriscore :</div>
-            <div class="inner-wrap alimentimgnutri">
-                {% if aliment.nutriletter == 'A' %}
-                <img src="{% static 'img/nutria.png' %}">
-                {% elif aliment.nutriletter == 'B' %}
-                <img src="{% static 'img/nutrib.png' %}">
-                {% elif aliment.nutriletter == 'C' %}
-                <img src="{% static 'img/nutric.png' %}">
-                {% elif aliment.nutriletter == 'D' %}
-                <img src="{% static 'img/nutrid.png' %}">
-                {% elif aliment.nutriletter == 'E' %}
-                <img src="{% static 'img/nutrie.png' %}">
-                {% endif %}
-            </div>
-            <div class="section"><span>3</span>Photos du produit :</div>
-            <div class="inner-wrap alimentimgbox">
-                <img src="{{ aliment.img }}"><img src="{{ aliment.url_nutri }}">
-            </div>
-            <div class="section"><span>4</span>Magasins :</div>
-            <div class="inner-wrap">
-                <p class="">{{ aliment.stores }}</p>
-            </div>
-            <div class="section"><span>5</span>Fiche du produit sur openfoodfacts :</div>
-            <div class="inner-wrap text-center alimentcardbuttonbox">
-                <div class="button-section mt-1"
-                     onclick="window.location.href = '{{ aliment.url }}';">
-                    <input type="button" value="Voir la fiche"/>
-                </div>
-                <div class="button-section mt-1"
-                     onclick="history.go(-1)">
-                    <input type="button" value="Retour à la sélection"/>
-                </div>
+            <div class="button-section mt-1"
+                 onclick="history.go(-1)">
+                <input type="button" value="Retour à la sélection"/>
             </div>
         </div>
-        <!-- FORM HERE -->
     </div>
+    <!-- FORM HERE -->
+</div>
 </div>
 {% endblock content %}
