@@ -1,0 +1,32 @@
+{% extends "main_home/base.html" %}
+{% load static %}
+{% block content %}
+<section>
+    <div class="bande">
+        <img>
+    </div>
+</section>
+<section class="bodybg mt-5">
+
+    <div id="app" class="container cardcontainer">
+        <div class="cardcontainerbox row d-flex justify-content-center">
+
+            {% for food in foods %}
+            <form method="POST">
+                <card data-image="{{ food.img }}">
+                    <a slot="nutri" href="https://fr.openfoodfacts.org/nutriscore"
+                       class="nutri {{ food.nutriscore }}">{{food.nutriletter}}</a>
+                    <h1 class="foodname" slot="header">{{ food.name }}</h1>
+                    <button class="btn savebtn" type="submit"
+                            slot="save" name="info"
+                            value="{{ food.url }}"><i class="fas fa-info-circle"></i></button>
+                    <button class="btn savebtn" type="submit"
+                            slot="save" name="save" value="{{ food.url }}"><i class="far fa-save"></i></button>
+                </card>
+            </form>
+            {% endfor %}
+        </div>
+    </div>
+
+</section>
+{% endblock content %}
