@@ -50,7 +50,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <div class="navbar-nav ml-auto my-2 my-lg-0">
-                <form class="search">
+                <form class="search" action="{% url 'main_home-proposition' %}">
                     <div class="search__field">
                         <input type="text" name="query" id="query2"
                                class="r-text-field a-field__input search__input navinput"
@@ -65,7 +65,7 @@
                         </button>
                     </div>
                     <button class="r-button search__button search__submit"
-                            type="submit">
+                            type="submit" name="submitt">
                         <span class="search__submit-label">Recherche</span>
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56.966 56.966"
                              class="navicon search navsearch search__icon-search">
@@ -79,7 +79,7 @@
                 <button onclick="window.location.href = {% url 'profile' %};"
                         class="js-scroll-trigger btn navbutton"><i
                         class="fas fa-user"></i></button>
-                <button onclick="window.location.href = '/home/saved/';"
+                <button onclick="window.location.href = {% url 'main_home-aliment' %};"
                         class="js-scroll-trigger btn navcarrotbutton"></button>
                 <button onclick="window.location.href = {% url 'logout' %};"
                         class="js-scroll-trigger btn navbutton"><i
@@ -88,7 +88,7 @@
                 <button onclick="window.location.href = {% url 'profile' %};"
                         class="js-scroll-trigger btn navbutton"><i
                         class="fas fa-user"></i></button>
-                <button onclick="window.location.href = '/home/saved/';"
+                <button onclick="window.location.href = {% url 'main_home-aliment' %};"
                         class="js-scroll-trigger btn navcarrotbutton"></button>
                 <button onclick="window.location.href = {% url 'login' %};"
                         class="js-scroll-trigger btn navbutton"><i

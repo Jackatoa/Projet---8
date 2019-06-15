@@ -12019,7 +12019,7 @@ header.masthead h1 {
     font-size: 30px; /* Set a font size */
     position: relative;
     color: #DE9440;
-    left: 70px;
+    left: 50px;
 
 }
 
@@ -12028,7 +12028,7 @@ header.masthead h1 {
 }
 
 .form-style-10 {
-    width: 450px;
+    width: 900px;
     padding: 30px;
     margin: 40px auto;
     background: #DE9440;
@@ -12069,12 +12069,12 @@ header.masthead h1 {
 .form-style-10 h1 > span {
     display: block;
     margin-top: 2px;
-    font-size: 13px;
+    font-size: 18px;
 }
 
 .form-style-10 label {
     display: block;
-    font-size: 13px;
+    font-size: 18px;
     color: black;
     margin-bottom: 15px;
 }
@@ -12106,7 +12106,7 @@ header.masthead h1 {
 }
 
 .form-style-10 .section {
-    font-size: 20px;
+    font-size: 25px;
     color: black;
     margin-bottom: 5px;
 }
@@ -12119,7 +12119,7 @@ header.masthead h1 {
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     border: 4px solid #345A61;
-    font-size: 14px;
+    font-size: 19px;
     margin-left: -45px;
     color: black;
     margin-top: -3px;
@@ -12138,7 +12138,7 @@ header.masthead h1 {
     -webkit-box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.17);
     box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.17);
     border: 1px solid #C45525;
-    font-size: 15px;
+    font-size: 20px;
 }
 
 .form-style-10 input[type="button"]:hover,
@@ -12195,17 +12195,19 @@ header.masthead h1 {
 .alimentcard {
     width: 75%;
 }
-
+.alimentcardbuttonbox{
+    display: flex;
+    justify-content: space-around;
+}
 .alimentcard .section {
     display: flex;
 }
 
 .alimentimgbox img {
-
+    border-radius: 8px;
 }
 
 .alimentimgnutri img {
-
 }
 
 .alimentimgnutri {
@@ -12218,7 +12220,9 @@ header.masthead h1 {
     flex-direction: row;
     justify-content: space-around;
 }
-
+.formlogin{
+    width: 450px;
+}
 @media (max-width: 1300px) {
     .alimentimgbox img {
         width: 300px;
@@ -12231,6 +12235,11 @@ header.masthead h1 {
         height: 184px;
     }
 }
+@media (max-width: 600px) {
+    .alimentcardbuttonbox{
+        flex-direction: column;
+    }
+}
 
 @media (max-width: 970px) {
     .alimentimgbox {
@@ -12241,7 +12250,7 @@ header.masthead h1 {
     }
 }
 
-@media (max-width: 576px) {
+@media (max-width: 980px) {
     .form-style-10 {
         width: 90%;
     }

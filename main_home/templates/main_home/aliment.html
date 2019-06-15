@@ -12,21 +12,35 @@
             </div>
             <div class="section"><span>2</span>Nutriscore :</div>
             <div class="inner-wrap alimentimgnutri">
+                {% if aliment.nutriletter == 'A' %}
                 <img src="{% static 'img/nutria.png' %}">
+                {% elif aliment.nutriletter == 'B' %}
+                <img src="{% static 'img/nutrib.png' %}">
+                {% elif aliment.nutriletter == 'C' %}
+                <img src="{% static 'img/nutric.png' %}">
+                {% elif aliment.nutriletter == 'D' %}
+                <img src="{% static 'img/nutrid.png' %}">
+                {% elif aliment.nutriletter == 'E' %}
+                <img src="{% static 'img/nutrie.png' %}">
+                {% endif %}
             </div>
             <div class="section"><span>3</span>Photos du produit :</div>
             <div class="inner-wrap alimentimgbox">
-                <img src="{{ aliment.img }}"><img src="{{ aliment.img }}">
+                <img src="{{ aliment.img }}"><img src="{{ aliment.url_nutri }}">
             </div>
             <div class="section"><span>4</span>Magasins :</div>
             <div class="inner-wrap">
                 <p class="">{{ aliment.stores }}</p>
             </div>
             <div class="section"><span>5</span>Fiche du produit sur openfoodfacts :</div>
-            <div class="inner-wrap text-center">
-                <div class="button-section"
+            <div class="inner-wrap text-center alimentcardbuttonbox">
+                <div class="button-section mt-1"
                      onclick="window.location.href = '{{ aliment.url }}';">
-                    <input type="button" name="Sign Up" value="Voir la fiche"/>
+                    <input type="button" value="Voir la fiche"/>
+                </div>
+                <div class="button-section mt-1"
+                     onclick="history.go(-1)">
+                    <input type="button" value="Retour à la sélection"/>
                 </div>
             </div>
         </div>

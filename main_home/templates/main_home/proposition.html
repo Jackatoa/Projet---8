@@ -10,18 +10,19 @@
 
     <div id="app" class="container cardcontainer">
         <div class="cardcontainerbox row d-flex justify-content-center">
-
             {% for food in foods %}
-            <form method="POST">
+            <form method="POST" action="{% url 'main_home-search' %}">
+                {% csrf_token %}
                 <card data-image="{{ food.img }}">
                     <a slot="nutri" href="https://fr.openfoodfacts.org/nutriscore"
                        class="nutri {{ food.nutriscore }}">{{food.nutriletter}}</a>
                     <h1 class="foodname" slot="header">{{ food.name }}</h1>
+                    <button class="btn savebtn" type="submit" formaction="{% url 'main_home-aliment' %}"
+                            value="{{ food }}"
+                            slot="save" name="info"><i class="fas fa-info-circle"></i></button>
                     <button class="btn savebtn" type="submit"
-                            slot="save" name="info"
-                            value="{{ food.url }}"><i class="fas fa-info-circle"></i></button>
-                    <button class="btn savebtn" type="submit"
-                            slot="save" name="save" value="{{ food.url }}"><i class="far fa-save"></i></button>
+                            slot="save" name="next" value="{{ food.categorie }}"><i
+                            class="fas fa-arrow-circle-right"></i></button>
                 </card>
             </form>
             {% endfor %}
