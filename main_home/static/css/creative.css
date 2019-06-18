@@ -12098,7 +12098,10 @@ header.masthead h1 {
     color: black;
     margin-bottom: 15px;
 }
-
+.form-style-10 ul{
+    list-style-type: circle;
+    font-size: 25px;
+}
 .form-style-10 input[type="text"],
 .form-style-10 input[type="date"],
 .form-style-10 input[type="datetime"],

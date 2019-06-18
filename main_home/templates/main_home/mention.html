@@ -1,0 +1,56 @@
+{% extends "main_home/base.html" %}
+{% load static %}
+{% block content %}
+<div class="emptybar"></div>
+<div class="basicbox">
+    <div class="form-style-10 alimentcard mt-5">
+        <h1>Mentions légales :</h1>
+        <div class="section"><span>1</span>Images :</div>
+        <div class="inner-wrap">
+            <ul>
+                <li><a href="https://fontawesome.com">Font Awesome</a></li>
+            </ul>
+        </div>
+        <div class="section"><span>2</span>Icones :</div>
+        <div class="inner-wrap">
+            <ul>
+                <li><a href="https://fontawesome.com">Font Awesome</a></li>
+            </ul>
+        </div>
+        <div class="section"><span>3</span>Langages utilisés:</div>
+        <div class="inner-wrap">
+            <ul>
+                <li><a href="https://www.python.org">Python</a></li>
+                <li><a href="https://fr.wikipedia.org/wiki/Feuilles_de_style_en_cascade">CSS</a></li>
+                <li><a href="https://fr.wikipedia.org/wiki/Hypertext_Markup_Language">HTML</a></li>
+                <li><a href="https://fr.wikipedia.org/wiki/JavaScript">JavaScript</a></li>
+            </ul>
+        </div>
+
+
+        <div class="section"><span>4</span>Développement :</div>
+        <div class="inner-wrap">
+            <ul>
+                <li><a href="https://www.python.org">Django</a></li>
+                <li><a href="https://fr.wikipedia.org/wiki/Feuilles_de_style_en_cascade">BootStrap
+                </a></li>
+            </ul>
+        </div>
+        <div class="section"><span>5</span>Templates :</div>
+        <div class="inner-wrap">
+            <ul>
+                <li><a href="https://www.python.org">Creative</a></li>
+            </ul>
+        </div>
+        <div class="section"><span>6</span>Retour à l'accueil
+        </div>
+        <div class="inner-wrap text-center alimentcardbuttonbox">
+            <div class="button-section mt-1"
+                 onclick="window.location.href = '/home';">
+                <input type="button" value="Accueil"/>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock content %}
