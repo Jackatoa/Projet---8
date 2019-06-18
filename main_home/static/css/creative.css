@@ -594,6 +594,11 @@ pre code {
         max-width: 1140px;
     }
 }
+.rowsave{
+    display: flex;
+    margin-left: 25px;
+    margin-right: 25px;
+}
 
 .container-fluid {
     width: 100%;
@@ -11802,7 +11807,14 @@ header.masthead h1 {
 .cardcontainerbox {
     margin-top: 100px;
 }
+.cardcontainerboxsaved{
 
+}
+.arrowright{
+    font-size: 50px;
+    color: #345A61;
+    margin-top: 150px;
+}
 .card-info p {
     opacity: 0;
     text-shadow: rgba(0, 0, 0, 1) 0 2px 3px;
@@ -12021,6 +12033,10 @@ header.masthead h1 {
     color: #DE9440;
     left: 50px;
 
+}
+
+.savebtnsolo {
+    left: 70px;
 }
 
 .savebtn:hover {
@@ -12346,3 +12362,24 @@ header.masthead h1 {
     width: 100%;
   }
 }
+
+#updateform{
+    display: none;
+}
+@media (max-width: 620px) {
+    .cardcontainerbox{
+        margin-top: 0px;
+    }
+    .rowsave{
+        flex-direction: column;
+        justify-content: space-between;
+        margin-top: 50px;
+        background-color: #345A61;
+        border-radius: 10px;
+    }
+    .arrowright{
+        position:absolute;
+        display: none;
+    }
+}
+

@@ -76,24 +76,40 @@
             </div>
             <div>
                 {% if user.is_authenticated %}
-                <button onclick="window.location.href = {% url 'profile' %};"
+                <button data-toggle="tooltip"
+                        data-placement="bottom" title="Mon compte" onclick="window.location.href =
+                        {% url 'profile' %};"
                         class="js-scroll-trigger btn navbutton"><i
                         class="fas fa-user"></i></button>
-                <button onclick="window.location.href = {% url 'main_home-aliment' %};"
+                <button data-toggle="tooltip"
+                        data-placement="bottom" title="Mes aliments"
+                        onclick="window.location.href =
+                        '/home/saved/';"
                         class="js-scroll-trigger btn navcarrotbutton"></button>
-                <button onclick="window.location.href = {% url 'logout' %};"
+                <button data-toggle="tooltip"
+                        data-placement="bottom" title="Déconnexion" onclick="window.location.href =
+                        {% url 'logout' %};"
                         class="js-scroll-trigger btn navbutton"><i
                         class="fas fa-sign-out-alt"></i></button>
                 {% else %}
-                <button onclick="window.location.href = {% url 'profile' %};"
+                <button data-toggle="tooltip"
+                        data-placement="bottom" title="Mon compte" onclick="window.location.href =
+                        {% url 'profile' %};"
                         class="js-scroll-trigger btn navbutton"><i
                         class="fas fa-user"></i></button>
-                <button onclick="window.location.href = {% url 'main_home-aliment' %};"
+                <button data-toggle="tooltip"
+                        data-placement="bottom" title="Mes aliments"
+                        onclick="window.location.href =
+                        '/home/saved/';"
                         class="js-scroll-trigger btn navcarrotbutton"></button>
-                <button onclick="window.location.href = {% url 'login' %};"
+                <button data-toggle="tooltip"
+                        data-placement="bottom" title="Connexion" onclick="window.location.href =
+                        {% url 'login' %};"
                         class="js-scroll-trigger btn navbutton"><i
                         class="fas fa-sign-in-alt"></i></button>
                 {% endif %}
+
+</div>
             </div>
         </div>
     </div>

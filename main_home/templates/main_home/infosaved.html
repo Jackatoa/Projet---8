@@ -8,19 +8,19 @@
         <h1>Informations du produit :</h1>
         <div class="section"><span>1</span>Nom :</div>
         <div class="inner-wrap">
-            <h2 class="">{{ aliment.product_name_fr }}</h2>
+            <h2 class="">{{ aliment.name }}</h2>
         </div>
         <div class="section"><span>2</span>Nutriscore :</div>
         <div class="inner-wrap alimentimgnutri">
-            {% if aliment.nutriletter == 'A' %}
+            {% if aliment.nutriscore == 'A' %}
             <img src="https://static.openfoodfacts.org/images/misc/nutriscore-a.svg">
-            {% elif aliment.nutriletter == 'B' %}
+            {% elif aliment.nutriscore == 'B' %}
             <img src="https://static.openfoodfacts.org/images/misc/nutriscore-b.svg">
-            {% elif aliment.nutriletter == 'C' %}
+            {% elif aliment.nutriscore == 'C' %}
             <img src="https://static.openfoodfacts.org/images/misc/nutriscore-c.svg">
-            {% elif aliment.nutriletter == 'D' %}
+            {% elif aliment.nutriscore == 'D' %}
             <img src="https://static.openfoodfacts.org/images/misc/nutriscore-d.svg">
-            {% elif aliment.nutriletter == 'E' %}
+            {% elif aliment.nutriscore == 'E' %}
             <img src="https://static.openfoodfacts.org/images/misc/nutriscore-e.svg">
             {% endif %}
         </div>
@@ -33,10 +33,10 @@
             <img id="myImg" src="{% static 'img/cakeisalie.png' %}" style="width:100%;max-width:300px"><img
                 id="myImg2" src="{{aliment.url_nutri}}" style="width:100%;max-width:300px">
             {% elif aliment.img != 'default img' and aliment.url_nutri == "default nutriimg" %}
-            <img id="myImg" src="{{aliment.img}}" style="width:100%;max-width:300px"><img
+            <img id="myImg" src="{{aliment.url_img}}" style="width:100%;max-width:300px"><img
                 id="myImg2" src="{% static 'img/cakeisalie.png' %}" style="width:100%;max-width:300px">
             {% else %}
-            <img id="myImg" src="{{aliment.img}}" style="width:100%;max-width:300px"><img
+            <img id="myImg" src="{{aliment.url_img}}" style="width:100%;max-width:300px"><img
                 id="myImg2" src="{{aliment.url_nutri}}" style="width:100%;max-width:300px">
             {% endif %}
         </div>

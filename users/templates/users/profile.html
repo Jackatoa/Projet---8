@@ -6,31 +6,56 @@
 <div class="basicbox">
     <div class="profilebande"></div>
     <div class="">
-        <form method="POST" enctype="multipart/form-data">
-            {% csrf_token %}
-            <div class="form-style-10 mt-5">
-                <h1>Informations du compte<span>Plus d'options à venir dans la v2</span></h1>
-                <div class="section"><span>1</span>Pseudo</div>
-                <div class="inner-wrap">
+        <div class="form-style-10 mt-5">
+            <h1>Informations du compte<span>Car vous êtes ici comme chez vous !</span></h1>
+            <div class="section"><span>1</span>Pseudo :</div>
+            <div class="inner-wrap">
 
-                    <h2 class="">{{ u_form.username|as_crispy_field }}</h2>
-                </div>
-                <div class="section"><span>2</span>Email</div>
-                <div class="inner-wrap">
-                    <p class="">{{ u_form.email|as_crispy_field }}</p>
-                </div>
-                <div class="section"><span>3</span>Image du profil</div>
-                <div class="inner-wrap">
-                    <p class="">{{ p_form|crispy }}</p>
-                </div>
-                <div class="section"><span>4</span>Validation</div>
-                <div class="inner-wrap text-center">
-                    <div class="button-section">
-                        <input type="submit" name="Update" value="Mettre à jour" />
-                    </div>
+                <h2 class="">{{ user.username }}</h2>
+            </div>
+            <div class="section"><span>2</span>Email</div>
+            <div class="inner-wrap">
+                <p class="">{{ user.email }}</p>
+            </div>
+            <div class="section"><span>3</span>Image du profil</div>
+            <div class="inner-wrap text-center">
+                <img class="rounded-circle article-img" src="{{ user.profile.image.url}}">
+            </div>
+            <div class="section"><span>4</span>Validation</div>
+            <div class="inner-wrap text-center">
+                <div class="button-section">
+                    <input onclick="visibleform()" type="button"
+                           value="Modifier les informations"/>
                 </div>
             </div>
-        </form>
+        </div>
+        <div id="updateform">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-style-10 mt-5">
+                    <h1>Modifier les informations<span>Envie d'un nouveau pseudo ?</span></h1>
+                    <div class="section"><span>1</span>Pseudo actuel : {{ user.username }}</div>
+                    <div class="inner-wrap">
+
+                        <h2 class="">{{ u_form.username|as_crispy_field }}</h2>
+                    </div>
+                    <div class="section"><span>2</span>Adresse actuelle : {{ user.email }}</div>
+                    <div class="inner-wrap">
+                        <p class="">{{ u_form.email|as_crispy_field }}</p>
+                    </div>
+                    <div class="section"><span>3</span>Image du profil</div>
+                    <div class="inner-wrap">
+                        <p class="">{{ p_form|crispy }}</p>
+                    </div>
+                    <div class="section"><span>4</span>Validation</div>
+                    <div class="inner-wrap text-center">
+                        <div class="button-section">
+                            <input type="submit" name="Update" value="Mettre à jour"/>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 {% endblock content %}

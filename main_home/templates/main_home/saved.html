@@ -7,15 +7,92 @@
     </div>
 </section>
 <section class="bodybg mt-5">
-    <div id="app" class="container cardcontainer">
+    <div id="app" class=" cardcontainer">
         <div class="cardcontainerbox row d-flex justify-content-center">
+            {% for aliment_saved in aliment_saveds %}
+            <div class="rowsave">
+                <form method="POST" action="{% url 'main_home-infosaved' %}">
+                    {% csrf_token %}
+                    <card data-image="{{ aliment_saved.urloriginal.url_img }}">
+                        {% if aliment_saved.urloriginal.nutriscore == 'A'%}
+                        <a slot="nutri" href="https://fr.openfoodfacts.org/nutriscore"
+                           class="nutri nutria">
+                            {{ aliment_saved.urloriginal.nutriscore }}
+                        </a>
+                        {% elif aliment_saved.urloriginal.nutriscore == 'B'%}
+                        <a slot="nutri" href="https://fr.openfoodfacts.org/nutriscore"
+                           class="nutri nutrib">
+                            {{ aliment_saved.urloriginal.nutriscore }}
+                        </a>
+                        {% elif aliment_saved.urloriginal.nutriscore == 'C'%}
+                        <a slot="nutri" href="https://fr.openfoodfacts.org/nutriscore"
+                           class="nutri nutric">
+                            {{ aliment_saved.urloriginal.nutriscore }}
+                        </a>
+                        {% elif aliment_saved.urloriginal.nutriscore == 'D'%}
+                        <a slot="nutri" href="https://fr.openfoodfacts.org/nutriscore"
+                           class="nutri nutrid">
+                            {{ aliment_saved.urloriginal.nutriscore }}
+                        </a>
+                        {% elif aliment_saved.urloriginal.nutriscore == 'E'%}
+                        <a slot="nutri" href="https://fr.openfoodfacts.org/nutriscore"
+                           class="nutri nutrie">
+                            {{ aliment_saved.urloriginal.nutriscore }}
+                        </a>
+                        {% endif %}
+                        <h1 class="foodname" slot="header">{{ aliment_saved.urloriginal.name }}</h1>
+                        <button class="btn savebtn" type="submit"
+                                value="{{ aliment_saved.urloriginal.url }}"
+                                slot="save" name="info"><i class="fas fa-info-circle"></i></button>
+                        <button class="btn savebtn" type="submit"
+                                formaction="{% url 'main_home-delete' %}"
+                                value="{{ aliment_saved.urloriginal.url }}"
+                                slot="save" name="info"><i class="fa fa-trash" aria-hidden="true"></i></i></button>
 
-            {% for food in foods %}
-            <card data-image="{{ food.img }}">
-                <a slot="nutri" href="https://fr.openfoodfacts.org/nutriscore" class="nutri {{ food.nutriscore }}">{{food.nutriletter}}</a>
-                <h1 class="foodname" slot="header">{{ food.name }}</h1>
-                <button class="btn savebtn" slot="save"><i class="far fa-save"></i></button>
-            </card>
+                    </card>
+                </form>
+                <i class="fas fa-arrow-right arrowright"></i>
+                <form method="POST" action="{% url 'main_home-infosaved' %}">
+                    {% csrf_token %}
+                    <card data-image="{{ aliment_saved.urlsubstitute.url_img }}">
+                        {% if aliment_saved.urlsubstitute.nutriscore == 'A'%}
+                        <a slot="nutri" href="https://fr.openfoodfacts.org/nutriscore"
+                           class="nutri nutria">
+                            {{ aliment_saved.urlsubstitute.nutriscore }}
+                        </a>
+                        {% elif aliment_saved.urlsubstitute.nutriscore == 'B'%}
+                        <a slot="nutri" href="https://fr.openfoodfacts.org/nutriscore"
+                           class="nutri nutrib">
+                            {{ aliment_saved.urlsubstitute.nutriscore }}
+                        </a>
+                        {% elif aliment_saved.urlsubstitute.nutriscore == 'C'%}
+                        <a slot="nutri" href="https://fr.openfoodfacts.org/nutriscore"
+                           class="nutri nutric">
+                            {{ aliment_saved.urlsubstitute.nutriscore }}
+                        </a>
+                        {% elif aliment_saved.urlsubstitute.nutriscore == 'D'%}
+                        <a slot="nutri" href="https://fr.openfoodfacts.org/nutriscore"
+                           class="nutri nutrid">
+                            {{ aliment_saved.urlsubstitute.nutriscore }}
+                        </a>
+                        {% elif aliment_saved.urlsubstitute.nutriscore == 'E'%}
+                        <a slot="nutri" href="https://fr.openfoodfacts.org/nutriscore"
+                           class="nutri nutrie">
+                            {{ aliment_saved.urlsubstitute.nutriscore }}
+                        </a>
+                        {% endif %}
+                        <h1 class="foodname" slot="header">{{ aliment_saved.urlsubstitute.name }}
+                        </h1>
+                        <button class="btn savebtn" type="submit"
+                                value="{{ aliment_saved.urlsubstitute.url }}"
+                                slot="save" name="info"><i class="fas fa-info-circle"></i></button>
+                        <button class="btn savebtn" type="submit"
+                                formaction="{% url 'main_home-delete' %}"
+                                value="{{ aliment_saved.urlsubstitute.url }}"
+                                slot="save" name="info"><i class="fa fa-trash" aria-hidden="true"></i></i></button>
+                    </card>
+                </form>
+            </div>
             {% endfor %}
         </div>
     </div>

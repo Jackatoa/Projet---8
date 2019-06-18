@@ -166,3 +166,16 @@ var span = document.getElementsByClassName("close")[0];
 span.onclick = function() {
   modal.style.display = "none";
 }
+
+function visibleform() {
+  var x = document.getElementById("updateform");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+
+$(document).ready(function(){
+  $('[data-toggle="tooltip"]').tooltip();
+});
