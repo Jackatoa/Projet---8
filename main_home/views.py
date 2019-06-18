@@ -89,4 +89,25 @@ def proposition(request):
             context = {'foods': a.get_results_from_search(query)}
             return render(request, 'main_home/proposition.html', context, {'title': 'Proposition'})
 
+@login_required
+def delete(request):
+    if request.method == 'POST':
+        if "delete" in request.POST:
+            value = {}
+            value['delete'] = request.POST.get('delete', None)
+            context = {
+                'aliment': value['delete']
+            }
+            return render(request, 'main_home/delete.html', context, {'title': 'Suppression'})
+
+def validatedelete(request):
+    if request.method == 'POST':
+        if "delete" in request.POST:
+            value = {}
+            value['delete'] = request.POST.get('delete', None)
+            al = Aliment.objects.get(url=value['delete'])
+            al.delete()
+            messages.success(request, f'Aliments supprimés !')
+            return redirect('../')
+
 a = Apioff()

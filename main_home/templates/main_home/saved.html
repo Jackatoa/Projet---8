@@ -47,7 +47,8 @@
                         <button class="btn savebtn" type="submit"
                                 formaction="{% url 'main_home-delete' %}"
                                 value="{{ aliment_saved.urloriginal.url }}"
-                                slot="save" name="info"><i class="fa fa-trash" aria-hidden="true"></i></i></button>
+                                slot="save" name="delete"><i class="fa fa-trash"
+                                                        aria-hidden="true"></i></i></button>
 
                     </card>
                 </form>
@@ -89,7 +90,8 @@
                         <button class="btn savebtn" type="submit"
                                 formaction="{% url 'main_home-delete' %}"
                                 value="{{ aliment_saved.urlsubstitute.url }}"
-                                slot="save" name="info"><i class="fa fa-trash" aria-hidden="true"></i></i></button>
+                                slot="save" name="delete"><i class="fa fa-trash"
+                                                        aria-hidden="true"></i></i></button>
                     </card>
                 </form>
             </div>

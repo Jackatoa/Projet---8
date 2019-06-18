@@ -9,4 +9,6 @@ urlpatterns = [
     path('saved/', views.saved, name='main_home-saved'),
     path('confirmation/', views.confirmation, name='main_home-confirmation'),
     path('infosaved/', views.infosaved, name='main_home-infosaved'),
+    path('delete/', views.delete, name='main_home-delete'),
+    path('validatedelete/', views.validatedelete, name='main_home-validatedelete'),
 ]

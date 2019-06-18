@@ -12188,7 +12188,9 @@ header.masthead h1 {
     left: 0;
     right: 0;
 }
-
+.invisible{
+    display: none;
+}
 .loginpopup {
     color: #345A61;
 }
@@ -12383,3 +12385,6 @@ header.masthead h1 {
     }
 }
 
+.inputtext{
+    font-size : 200px;
+}

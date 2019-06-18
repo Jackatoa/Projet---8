@@ -1,10 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+{% extends "main_home/base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="basicbox">
+<div class="emptybar"></div>
+<div class="form-style-10 formlogin mt-5">
+<h1>Suppression d'un aliment
+    <span> En êtes vous sûr ? Cette action est irrévoquable !</span></h1>
+<form method="POST" action="{% url 'main_home-validatedelete' %}">
+    {% csrf_token %}
+    <div class="section"><span>1</span>Suppression</div>
+    <div class="inner-wrap text-center">
+        <div class="button-section">
+            <input name="delete" value="{{ aliment }}" class="invisible">
+            <input class="inputtext" type="submit"
+                       value="Oui, j'en suis sur !"/>
+    </div>
+        <label class="labelform10"></label>
+    </div>
+    <div class="section"><span>2</span>Retour à l'accueil</div>
+        <div class="inner-wrap text-center">
+            <div class="button-section mt-1"
+                 >
+                <input class="inputtext" type="button" onclick="window.location.href = '../';"
+                       value="Non, je n'aime pas les décisions radicales"/>
+            </div>
+        <label class="labelform10"></label>
+    </div>
+</form>
+</div>
+</div>
+{% endblock content %}
