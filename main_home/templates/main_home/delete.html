@@ -4,26 +4,31 @@
 {% block content %}
 <div class="basicbox">
 <div class="emptybar"></div>
-<div class="form-style-10 formlogin mt-5">
+<div class="form-style-10 mt-5">
 <h1>Suppression d'un aliment
     <span> En êtes vous sûr ? Cette action est irrévoquable !</span></h1>
 <form method="POST" action="{% url 'main_home-validatedelete' %}">
     {% csrf_token %}
     <div class="section"><span>1</span>Suppression</div>
     <div class="inner-wrap text-center">
-        <div class="button-section">
+        <div class="button-section text-center">
             <input name="delete" value="{{ aliment }}" class="invisible">
-            <input class="inputtext" type="submit"
+            <input id="submitdeletelong" class="inputtext" type="submit"
                        value="Oui, j'en suis sur !"/>
+            <input id="submitdeletecours" class="inputtext" type="submit"
+                       value="Oui !"/>
     </div>
         <label class="labelform10"></label>
     </div>
     <div class="section"><span>2</span>Retour à l'accueil</div>
         <div class="inner-wrap text-center">
-            <div class="button-section mt-1"
-                 >
-                <input class="inputtext" type="button" onclick="window.location.href = '../';"
+            <div class="button-section mt-1">
+                <input id="submithomelong" class="inputtext" type="button"
+                       onclick="window.location.href = '../';"
                        value="Non, je n'aime pas les décisions radicales"/>
+                <input id="submithomecours" class="inputtext" type="button"
+                       onclick="window.location.href = '../';"
+                       value="Non !"/>
             </div>
         <label class="labelform10"></label>
     </div>

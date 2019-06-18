@@ -594,7 +594,8 @@ pre code {
         max-width: 1140px;
     }
 }
-.rowsave{
+
+.rowsave {
     display: flex;
     margin-left: 25px;
     margin-right: 25px;
@@ -11805,16 +11806,19 @@ header.masthead h1 {
 }
 
 .cardcontainerbox {
-    margin-top: 100px;
+    margin-top: 50px;
 }
-.cardcontainerboxsaved{
+
+.cardcontainerboxsaved {
 
 }
-.arrowright{
+
+.arrowright {
     font-size: 50px;
     color: #345A61;
     margin-top: 150px;
 }
+
 .card-info p {
     opacity: 0;
     text-shadow: rgba(0, 0, 0, 1) 0 2px 3px;
@@ -12188,9 +12192,11 @@ header.masthead h1 {
     left: 0;
     right: 0;
 }
-.invisible{
+
+.invisible {
     display: none;
 }
+
 .loginpopup {
     color: #345A61;
 }
@@ -12213,10 +12219,12 @@ header.masthead h1 {
 .alimentcard {
     width: 75%;
 }
-.alimentcardbuttonbox{
+
+.alimentcardbuttonbox {
     display: flex;
     justify-content: space-around;
 }
+
 .alimentcard .section {
     display: flex;
 }
@@ -12238,23 +12246,27 @@ header.masthead h1 {
     flex-direction: row;
     justify-content: space-around;
 }
-.formlogin{
+
+.formlogin {
     width: 450px;
 }
+
 @media (max-width: 1300px) {
     .alimentimgbox img {
         width: 300px;
         height: 300px;
     }
 }
+
 @media (max-width: 735px) {
     .alimentimgnutri img {
         width: 334px;
         height: 184px;
     }
 }
+
 @media (max-width: 600px) {
-    .alimentcardbuttonbox{
+    .alimentcardbuttonbox {
         flex-direction: column;
     }
 }
@@ -12273,118 +12285,168 @@ header.masthead h1 {
         width: 90%;
     }
 }
+
 @media (max-width: 458px) {
     .alimentimgbox img {
         width: 200px;
         height: 200px;
     }
 }
+
 @media (max-width: 458px) {
     .alimentimgnutri img {
         width: 250px;
         height: 137px;
     }
 }
+
 #myImg, #myImg2 {
-  border-radius: 5px;
-  cursor: pointer;
-  transition: 0.3s;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
-#myImg:hover {opacity: 0.7;}
-#myImg2:hover {opacity: 0.7;}
+#myImg:hover {
+    opacity: 0.7;
+}
+
+#myImg2:hover {
+    opacity: 0.7;
+}
+
 /* The Modal (background) */
 .modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0); /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.9); /* Black w/ opacity */
 }
 
 /* Modal Content (Image) */
 .modal-content {
-  margin: auto;
-  display: block;
-  width: 80%;
-  max-width: 700px;
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
 }
 
 /* Caption of Modal Image (Image Text) - Same Width as the Image */
 #caption {
-  margin: auto;
-  display: block;
-  width: 80%;
-  max-width: 700px;
-  text-align: center;
-  color: #ccc;
-  padding: 10px 0;
-  height: 150px;
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+    height: 150px;
 }
 
 /* Add Animation - Zoom in the Modal */
 .modal-content, #caption {
-  animation-name: zoom;
-  animation-duration: 0.6s;
+    animation-name: zoom;
+    animation-duration: 0.6s;
 }
 
 @keyframes zoom {
-  from {transform:scale(0)}
-  to {transform:scale(1)}
+    from {
+        transform: scale(0)
+    }
+    to {
+        transform: scale(1)
+    }
 }
 
 /* The Close Button */
 .close {
-  position: absolute;
-  top: 15px;
-  right: 35px;
-  color: #f1f1f1;
-  font-size: 40px;
-  font-weight: bold;
-  transition: 0.3s;
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
     margin-top: 100px;
 }
 
 .close:hover,
 .close:focus {
-  color: #bbb;
-  text-decoration: none;
-  cursor: pointer;
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
 }
 
 /* 100% Image Width on Smaller Screens */
-@media only screen and (max-width: 700px){
-  .modal-content {
-    width: 100%;
-  }
+@media only screen and (max-width: 700px) {
+    .modal-content {
+        width: 100%;
+    }
 }
 
-#updateform{
+#updateform {
     display: none;
 }
+
 @media (max-width: 620px) {
-    .cardcontainerbox{
+    .cardcontainerbox {
         margin-top: 0px;
     }
-    .rowsave{
+
+    .rowsave {
         flex-direction: column;
         justify-content: space-between;
         margin-top: 50px;
         background-color: #345A61;
         border-radius: 10px;
     }
-    .arrowright{
-        position:absolute;
+
+    .arrowright {
+        position: absolute;
         display: none;
     }
 }
 
-.inputtext{
-    font-size : 200px;
+#submitdeletecours,
+#submithomecours,
+#submitupdatecours,
+#submitlogincours,
+#submitretourcours {
+    display: none;
+}
+
+@media (max-width: 544px) {
+    #profileimg {
+        width: 100%;
+        height: auto;
+    }
+}
+
+@media (max-width: 620px) {
+    #submitdeletecours,
+    #submithomecours,
+    #submitupdatecours,
+    #submitlogincours,
+    #submitretourcours {
+        display: flex;
+        margin: auto;
+    }
+
+    #submitdeletelong,
+    #submithomelong,
+    #submitupdatelong,
+    #submitloginlong,
+    #submitretourlong {
+        display: none;
+    }
+}
+.buttoninput{
+    border: none;
+    box-shadow: none;
 }

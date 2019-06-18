@@ -78,7 +78,7 @@ def infosaved(request):
     value['info'] = request.POST.get('info', None)
     al = Aliment.objects.get(url=value['info'])
     context = {
-        'aliment': al
+        'aliment': al, 'stores': ast.literal_eval(al.stores)
     }
     return render(request, 'main_home/infosaved.html', context, {'title': 'Descriptif'})
 
@@ -109,5 +109,8 @@ def validatedelete(request):
             al.delete()
             messages.success(request, f'Aliments supprimés !')
             return redirect('../')
+
+def mention(request):
+    return render(request, 'main_home/mention.html', {'title': 'Mentions légales'})
 
 a = Apioff()

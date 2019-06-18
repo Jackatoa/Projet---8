@@ -2,14 +2,23 @@
 {% load static %}
 {% block content %}
 <section>
-    <div class="bande">
-        <img>
-    </div>
 </section>
 <section class="bodybg mt-5">
 
     <div id="app" class="container cardcontainer">
         <div class="cardcontainerbox row d-flex justify-content-center">
+            {% if user.is_authenticated %}
+
+            {% else %}
+            <div class="form-style-10 buttoninput text-center">
+                <input id="submitloginlong"
+                  onclick="location.href='../../login' " type="button"
+                 value="Connectez vous pour pouvoir enregistrer vos choix !"/>
+                <input id="submitlogincours"
+                  onclick="location.href='../../login' " type="button"
+                 value="Connectez vous !"/>
+            </div>
+            {% endif %}
             {% for food in foods %}
             <form method="POST" action="{% url 'main_home-confirmation' %}">
                 {% csrf_token %}
@@ -36,12 +45,13 @@
                     {% endif %}
                 </card>
             </form>
-            {% endfor %}
-            {% if user.is_authenticated %}
 
-            {% else %}
-                    <h1>Connectez vous pour pouvoir enregistrer vos choix !</h1>
-            {% endif %}
+            {% endfor %}
+            <div class="form-style-10 buttoninput button-section mt-2 text-center"
+                 onclick="history.go(-1)">
+                <input type="button" id="submitretourlong" value="Retour aux choix précédent"/>
+                <input type="button" id="submitretourcours" value="Retour"/>
+            </div>
         </div>
     </div>
 

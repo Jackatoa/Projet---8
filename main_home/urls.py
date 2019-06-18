@@ -11,4 +11,5 @@ urlpatterns = [
     path('infosaved/', views.infosaved, name='main_home-infosaved'),
     path('delete/', views.delete, name='main_home-delete'),
     path('validatedelete/', views.validatedelete, name='main_home-validatedelete'),
+    path('mention/', views.mention, name='main_home-mention'),
 ]
