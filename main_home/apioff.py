@@ -8,16 +8,19 @@ import ast
 
 class Apioff:
     def get_results_from_search(self, query):
+        """ return aliments for a basic query """
         data = self.api_call_results_search(query)
         Food.propositionslst = self.clean_datanewtest(data)
         return Food.propositionslst
 
     def get_results_from_category(self, categorie, nutriscore):
+        """return best aliments with the best category """
         data = self.api_call_results_category(categorie, nutriscore)
         Food.substituteslst = self.clean_data_category(data)
         return Food.substituteslst
 
     def api_call_results_search(self, query):
+        """ simple query call on openfoodfacts api"""
         url = "https://fr.openfoodfacts.org/cgi/search.pl?"
         params = {
             'action'       : 'process',
@@ -30,6 +33,7 @@ class Apioff:
         return data
 
     def api_call_results_category(self, category, previousnutri):
+        """create query for better nutriscore"""
         dictofbestresulsts = {'products': [], 'count' : 0}
         lstofnutri = ['A', 'B', 'C', 'D', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E']
         id = 0
@@ -64,6 +68,7 @@ class Apioff:
         return dictofbestresulsts
 
     def select_categorie(self, data):
+        """return the best category"""
         referencenumber = 1000000
         finalcategory = ''
         lstofuselesscategory = ["en:plant-based-foods-and-beverages", "en:plant-based-foods",
@@ -111,6 +116,7 @@ class Apioff:
         return finalcategory
 
     def get_aliment_dict(self, data, aliment, i):
+        """return cleaned aliment"""
         if 'product_name_it' in data['products'][i]:
             if data['products'][i]['product_name_it'] is not '':
                 aliment['product_name_fr'] = data['products'][i]['product_name_it']
@@ -142,6 +148,7 @@ class Apioff:
         return aliment
 
     def get_aliment_dict_hard(self, data, aliment, i):
+        """return only full documented aliments"""
         if all(name in data['products'][i].keys() for name in ('product_name_fr', 'image_url',
                                                                'image_nutrition_url',
                                                                'nutrition_grades', 'id',
@@ -161,6 +168,7 @@ class Apioff:
             return aliment
 
     def clean_datanewtest(self, data):
+        """return the best aliments by checking completness and already entred aliments"""
         newdata = []
         i = 0
         fulltry = True
@@ -237,6 +245,7 @@ class Apioff:
         return newdata
 
     def clean_data_category(self, data):
+        """return a cleaned aliment"""
         newdata = []
         i = 0
         if len(data['products']) < 6 :
