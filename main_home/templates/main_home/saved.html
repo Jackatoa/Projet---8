@@ -9,6 +9,16 @@
 <section class="bodybg mt-5">
     <div id="app" class=" cardcontainer">
         <div class="cardcontainerbox row d-flex justify-content-center">
+            {% if not aliment_saveds %}
+            <div class="text-center">
+            <h2>Vous n'avez aucun aliment enregistré actuellement</h2>
+            <div class="form-style-10 buttoninput button-section mt-2 text-center"
+                 onclick="window.location.href =
+                        '../';">
+                <input type="button" id="submithomelong" value="Commencer tout de suite !"/>
+                <input type="button" id="submithomecours" value="Commencer !"/>
+            </div></div>
+            {% endif %}
             {% for aliment_saved in aliment_saveds %}
             <div class="rowsave">
                 <form method="POST" action="{% url 'main_home-infosaved' %}">

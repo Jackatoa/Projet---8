@@ -12102,6 +12102,13 @@ header.masthead h1 {
     list-style-type: circle;
     font-size: 25px;
 }
+.mention li a{
+    color: black;
+    text-decoration: none;
+}
+.mention li a:hover{
+    color: orange;
+}
 .form-style-10 input[type="text"],
 .form-style-10 input[type="date"],
 .form-style-10 input[type="datetime"],

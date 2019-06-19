@@ -58,8 +58,8 @@ def confirmation(request):
             newaliment1.save()
             newaliment2.save()
             alimentsaved = AlimentSaved(
-                urloriginal= Aliment.objects.get(url=finalvalue[0]['url']),
-                urlsubstitute= Aliment.objects.get(url=finalvalue[1]['url']),
+                urloriginal= Aliment.objects.filter(url=finalvalue[0]['url'])[0],
+                urlsubstitute= Aliment.objects.filter(url=finalvalue[1]['url'])[0],
                 author=request.user)
             alimentsaved.save()
 
@@ -108,7 +108,7 @@ def validatedelete(request):
             al = Aliment.objects.get(url=value['delete'])
             al.delete()
             messages.success(request, f'Aliments supprimés !')
-            return redirect('../')
+            return redirect('../saved/')
 
 def mention(request):
     return render(request, 'main_home/mention.html', {'title': 'Mentions légales'})
