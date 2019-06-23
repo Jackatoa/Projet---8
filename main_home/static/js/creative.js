@@ -60,7 +60,6 @@ Vue.config.devtools = true;
 Vue.component('card', {
     template: `
     <div class="card-wrap"
-      @mousemove="handleMouseMove"
       @mouseenter="handleMouseEnter"
       @mouseleave="handleMouseLeave"
       ref="card">
