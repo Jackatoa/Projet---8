@@ -12048,6 +12048,10 @@ header.masthead h1 {
     color: #86EBE6;
 }
 
+.savebtn i:hover {
+    color: #86EBE6;
+}
+
 .form-style-10 {
     width: 900px;
     padding: 30px;
