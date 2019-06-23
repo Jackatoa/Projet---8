@@ -12042,13 +12042,10 @@ header.masthead h1 {
 
 .savebtnsolo {
     left: 70px;
+    z-index: 6;
 }
 
 .savebtn:hover {
-    color: #86EBE6;
-}
-
-.savebtn i:hover {
     color: #86EBE6;
 }
 
