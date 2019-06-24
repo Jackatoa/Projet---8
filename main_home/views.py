@@ -1,11 +1,13 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import AlimentSaved, Aliment
 from .apioff import Apioff
 import ast
+from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.views.generic import ListView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Create your views here.
 
@@ -24,11 +26,15 @@ def saved(request):
     }
     return render(request, 'main_home/saved.html', context)
 
-class SavedListView(ListView):
+class SavedListView(LoginRequiredMixin,ListView):
     model = AlimentSaved
     template_name = 'main_home/saved.html'
     context_object_name = 'aliment_saveds'
     paginate_by = 4
+
+    def get_query_set(self):
+        user = get_object_or_404(User, username=self.kwargs.get('username'))
+        return AlimentSaved.objects.filter(author=user)
 
 def search(request):
     if request.method == 'POST':
