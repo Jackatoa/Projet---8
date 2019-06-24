@@ -11,13 +11,14 @@
         <div class="cardcontainerbox row d-flex justify-content-center">
             {% if not aliment_saveds %}
             <div class="text-center">
-            <h2>Vous n'avez aucun aliment enregistré actuellement</h2>
-            <div class="form-style-10 buttoninput button-section mt-2 text-center"
-                 onclick="window.location.href =
+                <h2>Vous n'avez aucun aliment enregistré actuellement</h2>
+                <div class="form-style-10 buttoninput button-section mt-2 text-center"
+                     onclick="window.location.href =
                         '../';">
-                <input type="button" id="submithomelong" value="Commencer tout de suite !"/>
-                <input type="button" id="submithomecours" value="Commencer !"/>
-            </div></div>
+                    <input type="button" id="submithomelong" value="Commencer tout de suite !"/>
+                    <input type="button" id="submithomecours" value="Commencer !"/>
+                </div>
+            </div>
             {% endif %}
             {% for aliment_saved in aliment_saveds %}
             <div class="rowsave">
@@ -58,7 +59,7 @@
                                 formaction="{% url 'main_home-delete' %}"
                                 value="{{ aliment_saved.urloriginal.url }}"
                                 slot="save" name="delete"><i class="fa fa-trash"
-                                                        aria-hidden="true"></i></i></button>
+                                                             aria-hidden="true"></i></i></button>
 
                     </card>
                 </form>
@@ -101,11 +102,30 @@
                                 formaction="{% url 'main_home-delete' %}"
                                 value="{{ aliment_saved.urlsubstitute.url }}"
                                 slot="save" name="delete"><i class="fa fa-trash"
-                                                        aria-hidden="true"></i></i></button>
+                                                             aria-hidden="true"></i></i></button>
                     </card>
                 </form>
             </div>
             {% endfor %}
+            {% if is_paginated %}
+            {% if page_obj.has_previous %}
+            <a class="btn btn-outline-info" href="?page=1">FIRST</a>
+            <a class="btn btn-outline-info" href="?page={{ page_obj.previous_page_number }}">
+                PREVIOUS</a>
+            {% endif %}
+            {% for num in page_obj.paginator.page_range %}
+            {% if page_obj.number == num %}
+            <a class="btn btn-outline-info" href="?page={{ num }}">{{ num }}</a>
+            {% elif num > page_obj.number|add:'-3' and elif num < page_obj.number|add:'+3' %}
+            {% endif %}
+            {% endfor %}
+            {% endif %}
+
+            {% if page_obj.has_next %}
+            <a class="btn btn-outline-info" href="?page={{ page_obj.next_page_number }}">NEXT</a>
+            <a class="btn btn-outline-info" href="?page={{ page_obj.paginator.num_pages }}">
+                LAST</a>
+            {% endif %}
         </div>
     </div>
 </section>
