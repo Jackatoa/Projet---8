@@ -12244,7 +12244,22 @@ header.masthead h1 {
 .alimentimgbox img {
     border-radius: 8px;
 }
-
+.btnpage{
+    color:  black;
+    border-color: black;
+}
+.btnpage:hover{
+    color: black;
+    border-color: black;
+}
+.btnpagemain{
+    color: black;
+    border-color: black;
+}
+.btnpagemain:hover{
+    color: black;
+    border-color: black;
+}
 .alimentimgnutri img {
 }
 
