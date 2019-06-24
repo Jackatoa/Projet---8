@@ -62,7 +62,8 @@ def confirmation(request):
                 url_nutri=finalvalue[0]['url_nutri'],
                 category=finalvalue[0]['categorie'],
                 stores=finalvalue[0]['stores'],
-                nutriscore=finalvalue[0]['nutriletter'])
+                nutriscore=finalvalue[0]['nutriletter'],
+                author=request.user)
 
             newaliment2 = Aliment(
                 name=finalvalue[1]['product_name_fr'],
@@ -71,7 +72,8 @@ def confirmation(request):
                 url_nutri=finalvalue[1]['url_nutri'],
                 category=finalvalue[1]['categorie'],
                 stores=finalvalue[1]['stores'],
-                nutriscore=finalvalue[1]['nutriletter'])
+                nutriscore=finalvalue[1]['nutriletter'],
+                author=request.user)
 
             newaliment1.save()
             newaliment2.save()
