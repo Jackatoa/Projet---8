@@ -5,7 +5,7 @@ import ast
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
-
+from django.views.generic import ListView
 
 # Create your views here.
 
@@ -16,7 +16,7 @@ def home(request):
 @login_required
 def saved(request):
     als = AlimentSaved.objects.filter(author=request.user)
-    paginator = Paginator(als, 10)
+    paginator = Paginator(als, 4)
     page = request.GET.get('page')
     aliments = paginator.get_page(page)
     context = {
@@ -24,6 +24,11 @@ def saved(request):
     }
     return render(request, 'main_home/saved.html', context)
 
+class SavedListView(ListView):
+    model = AlimentSaved
+    template_name = 'main_home/saved.html'
+    context_object_name = 'aliment_saveds'
+    paginate_by = 4
 
 def search(request):
     if request.method == 'POST':
