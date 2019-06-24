@@ -130,7 +130,6 @@ def validatedelete(request):
         if "delete" in request.POST:
             value = {}
             value['delete'] = request.POST.get('delete', None)
-            print(value['delete'])
             al = Aliment.objects.get(value['delete'])
             al.delete()
             messages.success(request, f'Aliments supprimés !')
