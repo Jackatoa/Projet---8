@@ -18,7 +18,7 @@ def home(request):
 @login_required
 def saved(request):
     als = AlimentSaved.objects.filter(author=request.user)
-    paginator = Paginator(als, 4)
+    paginator = Paginator(als, 10)
     page = request.GET.get('page')
     aliments = paginator.get_page(page)
     context = {
