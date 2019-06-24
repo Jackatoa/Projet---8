@@ -130,7 +130,7 @@ def validatedelete(request):
         if "delete" in request.POST:
             value = {}
             value['delete'] = request.POST.get('delete', None)
-            al = Aliment.objects.get(url=value['delete'])
+            al = Aliment.objects.get(url=value['delete'], author=request.user)
             al.delete()
             messages.success(request, f'Aliments supprimés !')
             return redirect('../saved/')
