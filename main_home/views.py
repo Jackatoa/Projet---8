@@ -32,7 +32,7 @@ class SavedListView(LoginRequiredMixin,ListView):
     context_object_name = 'aliment_saveds'
     paginate_by = 4
 
-    def get_query_set(self):
+    def get_context_data(self, **kwargs):
         return AlimentSaved.objects.filter(author=self.kwargs['pk'])
 
 def search(request):
