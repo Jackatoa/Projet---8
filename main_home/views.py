@@ -33,8 +33,7 @@ class SavedListView(LoginRequiredMixin,ListView):
     paginate_by = 4
 
     def get_query_set(self):
-        user = get_object_or_404(User, username=self.kwargs.get('username'))
-        return AlimentSaved.objects.filter(author=user)
+        return AlimentSaved.objects.filter(author=User)
 
 def search(request):
     if request.method == 'POST':
