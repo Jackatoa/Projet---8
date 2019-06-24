@@ -7,7 +7,7 @@
 <div class="form-style-10 mt-5">
 <h1>Suppression d'un aliment
     <span> En êtes vous sûr ? Cette action est irrévoquable !</span></h1>
-<form method="POST" action="{% url 'main_home-validatedelete' %}">
+<form method="POST">
     {% csrf_token %}
     <div class="section"><span>1</span>Suppression</div>
     <div class="inner-wrap text-center">

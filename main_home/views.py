@@ -6,8 +6,8 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
-from django.views.generic import ListView
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import ListView, DeleteView
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 # Create your views here.
 
@@ -136,6 +136,15 @@ def validatedelete(request):
             messages.success(request, f'Aliments supprimés !')
             return redirect('../saved/')
 
+class AlimentDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = AlimentSaved
+    success_url = '/saved/'
+
+    def test_func(self):
+        alimentsaved = self.get_object()
+        if self.request.user == alimentsaved.author:
+            return True
+        return False
 
 def mention(request):
     return render(request, 'main_home/mention.html', {'title': 'Mentions légales'})

@@ -1,6 +1,6 @@
 from django.urls import path
 from . import views
-from .views import SavedListView
+from .views import SavedListView, AlimentDeleteView
 
 urlpatterns = [
     path('', views.home, name='main_home-home'),
@@ -10,7 +10,7 @@ urlpatterns = [
     path('saved/', SavedListView.as_view(), name='main_home-saved'),
     path('confirmation/', views.confirmation, name='main_home-confirmation'),
     path('infosaved/', views.infosaved, name='main_home-infosaved'),
-    path('delete/', views.delete, name='main_home-delete'),
+    path('delete/', AlimentDeleteView.as_view(), name='main_home-delete'),
     path('validatedelete/', views.validatedelete, name='main_home-validatedelete'),
     path('mention/', views.mention, name='main_home-mention'),
 ]
