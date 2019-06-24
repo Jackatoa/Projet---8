@@ -32,9 +32,8 @@ class SavedListView(LoginRequiredMixin,ListView):
     context_object_name = 'aliment_saveds'
     paginate_by = 4
 
-    def get_context_data(self, **kwargs):
-        context = {'aliment_saveds' : AlimentSaved.objects.filter(author=self.request.user)}
-        return context
+    def get_queryset(self):
+        return AlimentSaved.objects.filter(author=self.request.user)
 
 def search(request):
     if request.method == 'POST':
