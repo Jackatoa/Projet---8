@@ -56,8 +56,8 @@
                                 value="{{ aliment_saved.urloriginal.url }}"
                                 slot="save" name="info"><i class="fas fa-info-circle"></i></button>
                         <button class="btn savebtn" type="submit"
-                                formaction="{% url 'main_home-delete' aliment_saved.id %}"
-                                value="{{ aliment_saved.id }}"
+                                formaction="{% url 'main_home-delete' %}"
+                                value="{{ aliment_saved }}"
                                 slot="save" name="delete"><i class="fa fa-trash"
                                                              aria-hidden="true"></i></i></button>
 
@@ -99,12 +99,13 @@
                                 value="{{ aliment_saved.urlsubstitute.url }}"
                                 slot="save" name="info"><i class="fas fa-info-circle"></i></button>
                         <button class="btn savebtn" type="submit"
-                                formaction="{% url 'main_home-delete' aliment_saved.id %}"
-                                value="{{ aliment_saved.id }}"
+                                formaction="{% url 'main_home-delete' %}"
+                                value="{{ aliment_saved }}"
                                 slot="save" name="delete"><i class="fa fa-trash"
                                                              aria-hidden="true"></i></i></button>
                     </card>
-                    print({{ aliment_saved.id }})
+                    print({{ aliment_saved.urloriginal }})
+                    print({{ aliment_saved.urlsubstitute }})
                 </form>
             </div>
             {% endfor %}
