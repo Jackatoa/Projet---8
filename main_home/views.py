@@ -98,7 +98,7 @@ def aliment(request):
 def infosaved(request):
     value = {}
     value['info'] = request.POST.get('info', None)
-    al = Aliment.objects.get(url=value['info'])
+    al = Aliment.objects.get(url=value['info']).first()
     context = {
         'aliment': al, 'stores': ast.literal_eval(al.stores)
     }
