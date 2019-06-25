@@ -72,6 +72,8 @@ TEMPLATES = [
     },
 ]
 
+TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
+
 WSGI_APPLICATION = 'PurBeurre_django.wsgi.application'
 
 
