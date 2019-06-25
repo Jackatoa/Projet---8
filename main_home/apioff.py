@@ -10,8 +10,11 @@ class Apioff:
     def get_results_from_search(self, query):
         """ return aliments for a basic query """
         data = self.api_call_results_search(query)
-        Food.propositionslst = self.clean_datanewtest(data)
-        return Food.propositionslst
+        if data:
+            Food.propositionslst = self.clean_datanewtest(data)
+            return Food.propositionslst
+        else:
+            return []
 
     def get_results_from_category(self, categorie, nutriscore):
         """return best aliments with the best category """
