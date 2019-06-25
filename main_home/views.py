@@ -109,9 +109,13 @@ def proposition(request):
     if request.method == 'GET':
         query = request.GET.get('query')
         if query:
-            context = {'foods': a.get_results_from_search(query)}
-            return render(request, 'main_home/proposition.html', context, {'title': 'Proposition'})
-
+            results = a.get_results_from_search(query)
+            if results:
+                context = {'foods': results}
+                return render(request, 'main_home/proposition.html', context, {'title': 'Proposition'})
+            else:
+                messages.error(request, f'Il n\'y a pas de résultats pour cette recherche.')
+                return render(request, 'main_home/home.html')
 
 @login_required
 def delete(request):
