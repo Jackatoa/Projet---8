@@ -54,7 +54,8 @@
             <!-- Modal Caption (Image Text) -->
             <div id="caption"></div>
         </div>
-        {% if aliment.stores %}
+        print(aliment.stores)
+        {% if aliment.stores is not "" %}
         <div class="section"><span>4</span>Magasins :</div>
         <div class="inner-wrap">
             <h3 class="">{% for store in stores%}
