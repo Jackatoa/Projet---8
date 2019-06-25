@@ -7,10 +7,15 @@
             <div class="col-lg-10 align-self-end">
                 <h1 class="text-uppercase font-weight-bold maintitle">Du gras, oui,
                     mais de qualité !</h1>
+
                 <h2 class="text-uppercase font-weight-bold maintitle">Trouvez facilement un
                     produit de substitution pour ceux que vous consommez
                     tout les jours !</h2>
                 <hr class="divider my-4">
+                {% if message == 'noresults' %}
+                <h3 class="text-uppercase font-weight-bold maintitle">Il n'y a aucun résultat
+                    avec ces termes. Essayez encore !</h3>
+                {% endif %}
             </div>
 
             <div class="col-lg-8 align-self-baseline">

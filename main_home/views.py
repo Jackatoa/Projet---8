@@ -114,8 +114,8 @@ def proposition(request):
                 context = {'foods': results}
                 return render(request, 'main_home/proposition.html', context, {'title': 'Proposition'})
             else:
-                messages.error(request, f'Il n\'y a pas de résultats pour cette recherche.')
-                return render(request, 'main_home/home.html')
+                context = {'message': 'noresults'}
+                return render(request, 'main_home/home.html', context)
 
 @login_required
 def delete(request):
