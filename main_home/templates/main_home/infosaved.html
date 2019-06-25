@@ -54,7 +54,6 @@
             <!-- Modal Caption (Image Text) -->
             <div id="caption"></div>
         </div>
-        print({{ stores }})
         {% if stores %}
         <div class="section"><span>4</span>Magasins :</div>
         <div class="inner-wrap">
@@ -66,7 +65,7 @@
 
         </div>
         {% endif %}
-        <div class="section"><span>{% if aliment.stores %}5{% else %}4{% endif %}</span>Fiche
+        <div class="section"><span>{% if stores %}5{% else %}4{% endif %}</span>Fiche
             du produit sur openfoodfacts :
         </div>
         <div class="inner-wrap text-center alimentcardbuttonbox">
