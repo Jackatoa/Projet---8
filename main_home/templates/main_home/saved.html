@@ -57,7 +57,7 @@
                                 slot="save" name="info"><i class="fas fa-info-circle"></i></button>
                         <button class="btn savebtn" type="submit"
                                 formaction="{% url 'main_home-delete' %}"
-                                value="{{ aliment_saved }}"
+                                value="{{ aliment_saved.id }}"
                                 slot="save" name="delete"><i class="fa fa-trash"
                                                              aria-hidden="true"></i></i></button>
 
@@ -100,12 +100,11 @@
                                 slot="save" name="info"><i class="fas fa-info-circle"></i></button>
                         <button class="btn savebtn" type="submit"
                                 formaction="{% url 'main_home-delete' %}"
-                                value="{{ aliment_saved }}"
+                                value="{{ aliment_saved.id }}"
                                 slot="save" name="delete"><i class="fa fa-trash"
                                                              aria-hidden="true"></i></i></button>
                     </card>
-                    print({{ aliment_saved.urloriginal }})
-                    print({{ aliment_saved.urlsubstitute }})
+                    print({{ aliment_saved.id }})
                 </form>
             </div>
             {% endfor %}
