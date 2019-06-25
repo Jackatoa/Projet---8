@@ -10,7 +10,7 @@ class Apioff:
     def get_results_from_search(self, query):
         """ return aliments for a basic query """
         data = self.api_call_results_search(query)
-        if data:
+        if data['products']:
             Food.propositionslst = self.clean_datanewtest(data)
             return Food.propositionslst
         else:
