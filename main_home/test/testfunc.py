@@ -1,5 +1,5 @@
 import unittest
-from PurBeurre_django.main_home.apioff import Apioff
+from breadandpurebutter.main_home.apioff import Apioff
 
 class BotTests(unittest.TestCase):
 
