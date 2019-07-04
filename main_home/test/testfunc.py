@@ -1,5 +1,5 @@
 import unittest
-from PurBeurre.main_home.apioff import Apioff
+from main_home.apioff import Apioff
 
 class BotTests(unittest.TestCase):
 
