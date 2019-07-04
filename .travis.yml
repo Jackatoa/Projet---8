@@ -11,7 +11,10 @@ script:
   - ./manage.py test
 
 # ...
-
+test:
+  adapter: sqlite3
+  database: ":memory:"
+  timeout: 500
 # safelist
 branches:
   only:
