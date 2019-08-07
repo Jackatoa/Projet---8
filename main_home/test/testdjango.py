@@ -27,3 +27,21 @@ class HomePageTests(SimpleTestCase):
         response = self.client.get('/')
         self.assertNotContains(
             response, 'Hi there! I should not be on the page.')
+
+    def test_home_page_no_answer(self):
+        response = self.client.get('/home/proposition/?query=dfsdfsdfsdf&submitt=')
+        self.assertContains(response, 'Essayez encore')
+
+    def test_home_page_correct_answer(self):
+        response = self.client.get('/home/proposition/?query=nutella&submitt=')
+        self.assertNotContains(response, 'Essayez encore')
+
+    def test_home_page_no_letter(self):
+        response = self.client.get('/home/proposition/?query=,;:!:;&submitt=')
+        self.assertContains(response, 'Essayez encore')
+
+    def test_home_page_correct_letter(self):
+        response = self.client.get('/home/proposition/?query=nutella&submitt=')
+        self.assertNotContains(response, 'Essayez encore')
+
+
