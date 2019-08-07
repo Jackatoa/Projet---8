@@ -10,6 +10,7 @@ from django.contrib import messages
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.views.generic import ListView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+import re
 
 # Create your views here.
 def handler404(request, *args, **argv):
@@ -61,6 +62,18 @@ def search(request):
             return render(request, 'main_home/search.html', context, {'title': 'Descriptif'})
     return render(request, 'main_home/search.html', {'title': 'Résultats'})
 
+def searchnova(request):
+    if request.method == 'POST':
+        if "next" in request.POST:
+            value = {}
+            value['next'] = request.POST.get('next', None)
+            finalvalue = ast.literal_eval(value['next'])
+            categorie = a.select_categorie(finalvalue['info'][0])
+            context = {'foods'    : a.get_results_from_category_nova(categorie, finalvalue['info'][
+                1]),
+                       'firstfood': value['next']}
+            return render(request, 'main_home/search.html', context, {'title': 'Descriptif'})
+    return render(request, 'main_home/search.html', {'title': 'Résultats'})
 
 @login_required
 def confirmation(request):
@@ -77,6 +90,7 @@ def confirmation(request):
                 category=finalvalue[0]['categorie'],
                 stores=finalvalue[0]['stores'],
                 nutriscore=finalvalue[0]['nutriletter'],
+                novascore=finalvalue[0]['novascore'],
                 author=request.user)
 
             newaliment2 = Aliment(
@@ -87,6 +101,7 @@ def confirmation(request):
                 category=finalvalue[1]['categorie'],
                 stores=finalvalue[1]['stores'],
                 nutriscore=finalvalue[1]['nutriletter'],
+                novascore=finalvalue[1]['novascore'],
                 author=request.user)
 
             newaliment1.save()
@@ -123,10 +138,16 @@ def proposition(request):
     if request.method == 'GET':
         query = request.GET.get('query')
         if query:
-            results = a.get_results_from_search(query)
-            if results:
-                context = {'foods': results}
-                return render(request, 'main_home/proposition.html', context, {'title': 'Proposition'})
+            if re.search('[a-zA-Z]', query):
+                results = a.get_results_from_search(query)
+                print(results)
+                if results:
+                    context = {'foods': results}
+                    return render(request, 'main_home/proposition.html', context,
+                                  {'title': 'Proposition'})
+                else:
+                    context = {'message': 'noresults'}
+                    return render(request, 'main_home/home.html', context)
             else:
                 context = {'message': 'noresults'}
                 return render(request, 'main_home/home.html', context)
