@@ -10,6 +10,7 @@ class Aliment(models.Model):
     category = models.TextField()
     stores = models.TextField()
     nutriscore = models.CharField(max_length=1)
+    novascore = models.CharField(max_length=1)
     author = models.ForeignKey(User, on_delete=models.CASCADE, default='1')
 
     def __str__(self):
