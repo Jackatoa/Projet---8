@@ -22,6 +22,12 @@ class Apioff:
         Food.substituteslst = self.clean_data_category(data)
         return Food.substituteslst
 
+    def get_results_from_category_nova(self, categorie, novascore):
+        """return best aliments with the best category """
+        data = self.api_call_results_category_nova(categorie, novascore)
+        Food.substituteslst = self.clean_data_category(data)
+        return Food.substituteslst
+
     def api_call_results_search(self, query):
         """ simple query call on openfoodfacts api"""
         url = "https://fr.openfoodfacts.org/cgi/search.pl?"
@@ -37,8 +43,9 @@ class Apioff:
 
     def api_call_results_category(self, category, previousnutri):
         """create query for better nutriscore"""
-        dictofbestresulsts = {'products': [], 'count' : 0}
-        lstofnutri = ['A', 'B', 'C', 'D', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E']
+        dictofbestresulsts = {'products': [], 'count': 0}
+        lstofnutri = ['A', 'B', 'C', 'D', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E',
+                      'E', 'E', 'E', 'E']
         id = 0
         while len(dictofbestresulsts['products']) < 6 and id < 6:
             url = "https://world.openfoodfacts.org/cgi/search.pl?"
@@ -63,7 +70,43 @@ class Apioff:
             for product in data['products']:
                 if 'product_name_fr' in data['products'][i]:
                     if not any(d['product_name_fr'] == data['products'][i]['product_name_fr']
-                            for d in dictofbestresulsts['products']):
+                               for d in dictofbestresulsts['products']):
+                        dictofbestresulsts['products'].append(product)
+                        dictofbestresulsts['count'] += 1
+                i += 1
+            id += 1
+        return dictofbestresulsts
+
+    def api_call_results_category_nova(self, category, previousnutri):
+        """create query for better nutriscore"""
+        dictofbestresulsts = {'products': [], 'count': 0}
+        lstofnutri = ['1', '2', '3', '4', '4', '4', '4', '4', '4', '4', '4', '4', '4', '4', '4',
+                      '4', '4', '4', '4']
+        id = 0
+        while len(dictofbestresulsts['products']) < 6 and id < 6:
+            url = "https://world.openfoodfacts.org/cgi/search.pl?"
+            nutriscore = lstofnutri[id]
+            params = {
+                'tagtype_0'     : 'categories',
+                'tag_contains_0': 'contains',
+                'tag_0'         : category,
+                'tagtype_1'     : 'nova_groups',
+                'tag_contains_1': 'contains',
+                'tag_1'         : nutriscore,
+                'sort_by'       : 'completeness',
+                'page_size'     : '20',
+                'axis_x'        : 'energy',
+                'axis_y'        : 'product_n',
+                'action'        : 'process',
+                'json'          : '1',
+            }
+            response = requests.get(url=url, params=params)
+            data = response.json()
+            i = 0
+            for product in data['products']:
+                if 'product_name_fr' in data['products'][i]:
+                    if not any(d['product_name_fr'] == data['products'][i]['product_name_fr']
+                               for d in dictofbestresulsts['products']):
                         dictofbestresulsts['products'].append(product)
                         dictofbestresulsts['count'] += 1
                 i += 1
@@ -138,6 +181,8 @@ class Apioff:
             aliment['url_nutri'] = data['products'][i]['image_nutrition_url']
         if 'nutrition_grades' in data['products'][i]:
             aliment['nutriletter'] = data['products'][i]['nutrition_grades'].upper()
+        if 'nova_groups' in data['products'][i]:
+            aliment['nova_groups'] = data['products'][i]['nova_groups']
         if 'id' in data['products'][i]:
             aliment['code'] = data['products'][i]['id']
         if 'categories_tags' in data['products'][i]:
@@ -145,6 +190,7 @@ class Apioff:
         if 'stores_tags' in data['products'][i]:
             aliment['stores'] = data['products'][i]['stores_tags']
         aliment['nutriscore'] += aliment['nutriletter'].lower()
+        aliment['novascore'] += str(aliment['nova_groups'])
         aliment['url'] = "https://fr.openfoodfacts.org/produit/" + aliment['code']
         aliment['info'].append(aliment['categorie'])
         aliment['info'].append(aliment['nutriletter'])
@@ -155,16 +201,19 @@ class Apioff:
         if all(name in data['products'][i].keys() for name in ('product_name_fr', 'image_url',
                                                                'image_nutrition_url',
                                                                'nutrition_grades', 'id',
-                                                               'categories_tags', 'stores_tags')):
+                                                               'categories_tags', 'stores_tags',
+                                                               'nova_groups')):
             aliment['product_name_fr'] = data['products'][i]['product_name_fr']
             aliment['img'] = data['products'][i]['image_url']
             aliment['url_nutri'] = data['products'][i]['image_nutrition_url']
             aliment['nutriletter'] = data['products'][i]['nutrition_grades'].upper()
+            aliment['nova_groups'] = data['products'][i]['nova_groups']
             aliment['code'] = data['products'][i]['id']
             aliment['categorie'] = data['products'][i]['categories_tags']
             if data['products'][i]['stores_tags'] != '':
                 aliment['stores'] = data['products'][i]['stores_tags']
             aliment['nutriscore'] += aliment['nutriletter'].lower()
+            aliment['novascore'] += str(aliment['nova_groups'])
             aliment['url'] = "https://fr.openfoodfacts.org/produit/" + aliment['code']
             aliment['info'].append(aliment['categorie'])
             aliment['info'].append(aliment['nutriletter'])
@@ -188,7 +237,7 @@ class Apioff:
                        'img'            : 'default img', 'nutriscore': 'nutri', 'nutriletter': '?',
                        'code'           : '0', 'url_nutri': 'default nutriimg',
                        'categorie'      : 'en:cocoa-and-hazelnuts-spreads', 'info': [], 'stores'
-                       : 'no stores'}
+                                        : 'no stores', 'nova_groups': 'nova', 'novascore': 'nova'}
 
             if i == maxresult and fulltry:
                 i = 0
@@ -251,7 +300,7 @@ class Apioff:
         """return a cleaned aliment"""
         newdata = []
         i = 0
-        if len(data['products']) < 6 :
+        if len(data['products']) < 6:
             maxresult = len(data['products'])
         else:
             maxresult = 5
@@ -260,7 +309,7 @@ class Apioff:
                        'img'            : 'default img', 'nutriscore': 'nutri', 'nutriletter': '?',
                        'code'           : '0', 'url_nutri': 'default nutriimg',
                        'categorie'      : 'en:cocoa-and-hazelnuts-spreads', 'info': [], 'stores'
-                       : 'no stores'}
+                                        : 'no stores', 'nova_groups': 'nova', 'novascore': 'nova'}
             newdata.append(a.get_aliment_dict(data, aliment, i))
             i += 1
         return newdata
